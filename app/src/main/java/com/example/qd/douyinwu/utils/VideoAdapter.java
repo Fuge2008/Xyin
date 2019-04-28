@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.qd.douyinwu.MainActivity;
 import com.example.qd.douyinwu.R;
 import com.example.qd.douyinwu.view.GoodView;
+import com.example.qd.douyinwu.view.MarqueeTextView;
 import com.example.qd.douyinwu.view.MusicalNoteLayout;
 
 import java.util.List;
@@ -82,7 +83,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                 showShare();
             }
         });
-
+        holder.marquee1.startScroll();
     }
 
     @Override
@@ -97,6 +98,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         ImageView iv_share;
         ImageView iv_heart;
         MusicalNoteLayout musicalNoteLayout;
+        MarqueeTextView marquee1;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -104,6 +106,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             iv_commit = itemView.findViewById(R.id.iv_commit);
             iv_share = itemView.findViewById(R.id.iv_share);
             jzVideo = itemView.findViewById(R.id.jzVideo);
+            marquee1 = itemView.findViewById(R.id.marquee1);
             musicalNoteLayout = itemView.findViewById(R.id.music_note_layout);
             iv_heart = itemView.findViewById(R.id.iv_heart);
 

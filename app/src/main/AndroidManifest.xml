@@ -98,6 +98,27 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity"
             android:screenOrientation="portrait"/>
+        <activity-alias
+            android:name="com.fly.video.downloader.ShareActivity"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/share_recv_name"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.SEND" />
+                <!-- <action android:name="android.intent.action.SEND_MULTIPLEND"/> -->
+                <data android:mimeType="text/plain" />
+
+                <!--
+                <data android:mimeType="image/jpeg"/>
+                <data android:mimeType="image/png"/>
+                <data android:mimeType="application/zip"/>
+                <data android:mimeType="application/rar"/>
+                <data android:mimeType="audio/amr"/>
+                -->
+            </intent-filter>
+
+        </activity-alias>
     </application>
 
 </manifest>
