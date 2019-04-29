@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
@@ -49,6 +50,7 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/iv_doview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -175,6 +177,14 @@
             android:tint="#f2f2f2" />
     </RelativeLayout>
 
+    <com.example.qd.douyinwu.view.DYLoadingView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        app:color1="#FF00EEEE"
+        app:color2="#FFFF4040"
+        android:id="@+id/dy_view"
+        />
 
 
 </RelativeLayout>

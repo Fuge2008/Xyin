@@ -16,4 +16,14 @@
     </style>
     <style name="main_theme" parent="AppTheme2"></style>
 
+    <style name="Dialog_Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="dialog_bond" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
 </resources>
