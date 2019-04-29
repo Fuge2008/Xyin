@@ -42,16 +42,20 @@ import com.example.qd.douyinwu.utils.SoftKeyBoardListener;
 import com.example.qd.douyinwu.utils.SoftKeyHideShow;
 import com.example.qd.douyinwu.utils.VideoAdapter;
 import com.example.qd.douyinwu.view.DYLoadingView;
+import com.example.qd.douyinwu.view.GoodView;
 import com.tiktokdemo.lky.tiktokdemo.Constant;
 import com.tiktokdemo.lky.tiktokdemo.record.RecordVideoActivity;
 import com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity;
 import com.tiktokdemo.lky.tiktokdemo.record.bean.MusicBean;
 import com.tiktokdemo.lky.tiktokdemo.utils.AppUtil;
 import com.tiktokdemo.lky.tiktokdemo.utils.FileUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class MainActivity extends FragmentActivity {
     private List<String> myData;
@@ -70,6 +74,7 @@ public class MainActivity extends FragmentActivity {
     private Animation showAction;
     private VideoAdapter adapter;
     private ImageView iv_doview;
+
 
     private DYLoadingView dyLoadingView;
 
@@ -184,6 +189,9 @@ public class MainActivity extends FragmentActivity {
         dyLoadingView = findViewById(R.id.dy_view);
         myData = new ArrayList<>();
         dyLoadingView.start();
+
+
+
     }
 
     private void addData() {
@@ -569,4 +577,21 @@ public class MainActivity extends FragmentActivity {
         }
         return permissionStr;
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+//    @Override
+//    protected void onResume() {//友盟统计
+//        super.onResume();
+//        MobclickAgent.onResume(this);
+//    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        MobclickAgent.onPause(this);
+//    }
+
+
 }
