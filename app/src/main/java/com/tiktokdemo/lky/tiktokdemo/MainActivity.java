@@ -23,7 +23,7 @@
 //import com.tiktokdemo.lky.tiktokdemo.utils.AppUtil;
 //import com.tiktokdemo.lky.tiktokdemo.utils.FileUtils;
 //
-//public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
+//public class DownloadVideoActivity extends AppCompatActivity implements View.OnClickListener {
 //
 //    private final String LOCAL_MUSIC_NAME = "RISE.mp3";
 //    private final String LOCAL_VIDEO_NAME = "RBB.mp4";

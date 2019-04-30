@@ -30,7 +30,7 @@ import butterknife.Unbinder;
 
 import static com.github.florent37.runtimepermission.RuntimePermission.askPermission;
 
-public class MainActivity2 extends BaseActivity {
+public class DownloadVideoActivity extends BaseActivity {
     @BindView(R.id.navigation)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.toolbar)
@@ -74,7 +74,7 @@ public class MainActivity2 extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_download_video);
         unbinder = ButterKnife.bind(this);
 
         // 设置Toolbar
@@ -97,12 +97,12 @@ public class MainActivity2 extends BaseActivity {
         askPermission(this).ask(new PermissionListener() {
             @Override
             public void onAccepted(RuntimePermission runtimePermission, List<String> accepted) {
-                Toast.makeText(MainActivity2.this,"OK", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DownloadVideoActivity.this,"OK", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDenied(RuntimePermission runtimePermission, List<String> denied, List<String> foreverDenied) {
-                Toast.makeText(MainActivity2.this,"Why?", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DownloadVideoActivity.this,"Why?", Toast.LENGTH_SHORT).show();
             }
         });
 

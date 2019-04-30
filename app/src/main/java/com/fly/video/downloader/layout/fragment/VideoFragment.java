@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 
 import com.example.qd.douyinwu.R;
-import com.fly.video.downloader.MainActivity2;
+import com.fly.video.downloader.DownloadVideoActivity;
 import com.fly.video.downloader.layout.listener.VideoFragmentListener;
 import com.fly.video.downloader.util.content.Recv;
 import com.fly.video.downloader.util.content.analyzer.AnalyzerTask;
@@ -76,7 +76,7 @@ public class VideoFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (R.id.video_menu_search == item.getItemId()){
-            ((MainActivity2)getActivity()).showVideoSearchFragment();
+            ((DownloadVideoActivity)getActivity()).showVideoSearchFragment();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <com.example.qd.douyinwu.view.Love
+        android:id="@+id/love"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </com.example.qd.douyinwu.view.Love>
@@ -177,6 +178,7 @@
             android:id="@+id/cb"/>
 
         <ImageView
+            android:id="@+id/iv_search"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_centerVertical="true"

@@ -18,8 +18,8 @@ import android.widget.Toast;
 
 import com.example.qd.douyinwu.R;
 import com.fly.iconify.widget.IconTextView;
+import com.fly.video.downloader.DownloadVideoActivity;
 import com.fly.video.downloader.GlideApp;
-import com.fly.video.downloader.MainActivity2;
 import com.fly.video.downloader.core.io.Storage;
 import com.fly.video.downloader.core.listener.FragmentListener;
 import com.fly.video.downloader.util.content.analyzer.AnalyzerTask;
@@ -125,7 +125,7 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
             reset();
 
             if (!fromHistory)
-                ((MainActivity2)fragment.getActivity()).onHistoryAppend(video);
+                ((DownloadVideoActivity)fragment.getActivity()).onHistoryAppend(video);
 
             downloadQueue.clear();
             nickname.setText(video.getUser().getNickname());
@@ -169,9 +169,9 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
     @Override
     public void onQueueProgress(DownloadQueue downloadQueue, long loaded, long total) {
         if (total <= 0)
-            ((MainActivity2) context).setMainProgress(0);
+            ((DownloadVideoActivity) context).setMainProgress(0);
         else
-            ((MainActivity2) context).setMainProgress((int)(loaded * 100 / total));
+            ((DownloadVideoActivity) context).setMainProgress((int)(loaded * 100 / total));
 
         textDownloaded.setVisibility(View.INVISIBLE);
     }

@@ -69,5 +69,15 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="def_waveline_style">
+        <item name="wave_first_color">@color/colorAccent</item>
+        <item name="wave_second_color">@color/colorPrimary</item>
+        <item name="wave_bottom_color">@android:color/white</item>
 
+        <item name="wave_line_width">2dp</item>
+        <item name="wave_phase">45.0</item>
+        <item name="wave_phase_second">55.0</item>
+        <item name="wave_amplifier">60.0</item>
+        <item name="wave_frequency">1.0</item>
+    </style>
 </resources>

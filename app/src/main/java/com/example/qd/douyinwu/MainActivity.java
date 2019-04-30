@@ -43,6 +43,8 @@ import com.example.qd.douyinwu.utils.SoftKeyHideShow;
 import com.example.qd.douyinwu.utils.VideoAdapter;
 import com.example.qd.douyinwu.view.DYLoadingView;
 import com.example.qd.douyinwu.view.GoodView;
+import com.example.qd.douyinwu.view.Love;
+import com.fly.video.downloader.DownloadVideoActivity;
 import com.tiktokdemo.lky.tiktokdemo.Constant;
 import com.tiktokdemo.lky.tiktokdemo.record.RecordVideoActivity;
 import com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity;
@@ -52,10 +54,16 @@ import com.tiktokdemo.lky.tiktokdemo.utils.FileUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends FragmentActivity {
     private List<String> myData;
@@ -74,6 +82,8 @@ public class MainActivity extends FragmentActivity {
     private Animation showAction;
     private VideoAdapter adapter;
     private ImageView iv_doview;
+    private ImageView iv_search;
+    private Love love;
 
 
     private DYLoadingView dyLoadingView;
@@ -171,6 +181,8 @@ public class MainActivity extends FragmentActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(0xff000000);
         }
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void setView() {
@@ -187,14 +199,39 @@ public class MainActivity extends FragmentActivity {
         et_context = findViewById(R.id.et_context);
         iv_doview = findViewById(R.id.iv_doview);
         dyLoadingView = findViewById(R.id.dy_view);
+        love = findViewById(R.id.love);
+        iv_search = findViewById(R.id.iv_search);
         myData = new ArrayList<>();
         dyLoadingView.start();
-
+        iv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,DownloadVideoActivity.class));
+            }
+        });
 
 
     }
 
     private void addData() {
+        //1.创建OkHttpClient对象
+        OkHttpClient okHttpClient = new OkHttpClient();
+        //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
+        Request request = new Request.Builder().url("http://www.baidu.com").method("GET",null).build();
+        //3.创建一个call对象,参数就是Request请求对象
+        Call call = okHttpClient.newCall(request);
+        //4.请求加入调度，重写回调方法
+        call.enqueue(new Callback() {
+            //请求失败执行的方法
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+            //请求成功执行的方法
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+            }
+        });
+
         myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=97022dc18711411ead17e8dcb75bccd2&line=0&ratio=720p&media_type=4&vr_type=0");
         myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=374e166692ee4ebfae030ceae117a9d0&line=0&ratio=720p&media_type=4&vr_type=0");
         myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=8a55161f84cb4b6aab70cf9e84810ad2&line=0&ratio=720p&media_type=4&vr_type=0");

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 
 import com.example.qd.douyinwu.R;
-import com.fly.video.downloader.MainActivity2;
+import com.fly.video.downloader.DownloadVideoActivity;
 import com.fly.video.downloader.core.Validator;
 import com.fly.video.downloader.core.content.ClipboardManager;
 
@@ -125,7 +125,7 @@ public class VideoSearchFragment extends Fragment {
             Toast.makeText(getActivity(), R.string.noURL, Toast.LENGTH_SHORT).show();
         } else {
             getActivity().getSupportFragmentManager().beginTransaction().hide(this).commit();
-            ((MainActivity2)getActivity()).onVideoChange(str);
+            ((DownloadVideoActivity)getActivity()).onVideoChange(str);
             editor.setText("");
         }
 

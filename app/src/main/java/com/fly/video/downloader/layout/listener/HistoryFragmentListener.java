@@ -6,8 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 
-
-import com.fly.video.downloader.MainActivity2;
+import com.fly.video.downloader.DownloadVideoActivity;
 import com.fly.video.downloader.core.listener.FragmentListener;
 import com.fly.video.downloader.layout.fragment.HistoryRecyclerViewAdapter;
 
@@ -26,7 +25,7 @@ public class HistoryFragmentListener extends FragmentListener {
 
     public void onListFragmentInteraction(HistoryRecyclerViewAdapter.ViewHolder holder)
     {
-        ((MainActivity2)fragment.getActivity()).onVideoChange(holder.video, true);
+        ((DownloadVideoActivity)fragment.getActivity()).onVideoChange(holder.video, true);
     }
 
     @Override
