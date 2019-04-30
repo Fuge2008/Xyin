@@ -219,7 +219,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="centerInside"
-                android:src="@mipmap/chaopai_luzhi_jianyinyue" />
+                android:src="@mipmap/aaq" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -236,8 +236,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerInside"
-                android:src="@mipmap/chaopai_luzhi_xuanfengmian"
-                android:visibility="gone"/>
+                android:src="@mipmap/ahu"
+                android:visibility="visible"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -247,7 +247,7 @@
                 android:text="@string/tidal_pat_cover_selected"
                 android:textColor="@color/white"
                 android:textSize="11sp"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
 
             <ImageView
                 android:id="@+id/tidal_pat_upload_video_volume_img"
@@ -255,7 +255,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerInside"
-                android:src="@mipmap/chaopai_yinliang" />
+                android:src="@mipmap/arf" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -272,7 +272,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerInside"
-                android:src="@mipmap/chaopai_teixao" />
+                android:src="@mipmap/aqc" />
 
             <TextView
                 android:layout_width="wrap_content"

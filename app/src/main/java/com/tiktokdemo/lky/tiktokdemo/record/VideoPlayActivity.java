@@ -177,7 +177,7 @@ public class VideoPlayActivity extends Activity implements View.OnClickListener,
         findViewById(R.id.tidal_pat_record_cut_audio_confirm_img).setOnClickListener(this);
         findViewById(R.id.tidal_pat_upload_video_volume_img).setOnClickListener(this);
         ImageView volumeImg = findViewById(R.id.tidal_pat_upload_video_volume_img);
-        volumeImg.setImageResource(mTidalPatRecordDraftBean.getRecordTimeType() != RecordTimeType.RECORD_TIME_15?R.mipmap.btn_volume_pre:R.mipmap.chaopai_yinliang);
+        volumeImg.setImageResource(mTidalPatRecordDraftBean.getRecordTimeType() != RecordTimeType.RECORD_TIME_15?R.mipmap.arf:R.mipmap.arf);
         volumeImg.setOnClickListener(this);
         mCutMusicImg.setOnClickListener(this);
         findViewById(R.id.tidal_pat_record_voice_complete_btn).setOnClickListener(this);
@@ -190,9 +190,9 @@ public class VideoPlayActivity extends Activity implements View.OnClickListener,
         mCutMusicImg.setImageResource((mMusicBean == null || mTidalPatRecordDraftBean == null
                 || TextUtils.isEmpty(mMusicBean.getUrl()) || TextUtils.isEmpty(mTidalPatRecordDraftBean.getMusicLocalUrl()))
                 || mTidalPatRecordDraftBean.getRecordTimeType() != RecordTimeType.RECORD_TIME_15
-                ?R.mipmap.btn_cut_dis:R.mipmap.chaopai_luzhi_jianyinyue);
+                ?R.mipmap.aaq:R.mipmap.aaq);
         ImageView specialEffectsImg = findViewById(R.id.tidal_pat_upload_video_special_effects_img);
-        specialEffectsImg.setImageResource(mTidalPatRecordDraftBean.getRecordTimeType() == RecordTimeType.RECORD_TIME_15?R.mipmap.chaopai_teixao:R.mipmap.chaopai_teixao_nor);
+        specialEffectsImg.setImageResource(mTidalPatRecordDraftBean.getRecordTimeType() == RecordTimeType.RECORD_TIME_15?R.mipmap.aqc:R.mipmap.aqd);
         specialEffectsImg.setOnClickListener(this);
 
         initSpecialEffectsView();
@@ -668,7 +668,7 @@ public class VideoPlayActivity extends Activity implements View.OnClickListener,
 
     @Override
     public void checkMusicEmpty() {
-        mCutMusicImg.setImageResource(R.mipmap.btn_cut_dis);
+        mCutMusicImg.setImageResource(R.mipmap.aaq);
     }
 
     @Override

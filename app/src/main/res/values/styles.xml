@@ -14,6 +14,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="main_theme" parent="AppTheme2"></style>
 
     <style name="Dialog_Fullscreen">
@@ -69,6 +70,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="def_waveline_style">
         <item name="wave_first_color">@color/colorAccent</item>
         <item name="wave_second_color">@color/colorPrimary</item>
@@ -80,4 +82,13 @@
         <item name="wave_amplifier">60.0</item>
         <item name="wave_frequency">1.0</item>
     </style>
+
+    <style name="AppTheme2.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme2.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

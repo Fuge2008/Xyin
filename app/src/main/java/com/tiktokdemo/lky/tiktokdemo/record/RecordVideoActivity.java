@@ -1,5 +1,6 @@
 package com.tiktokdemo.lky.tiktokdemo.record;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import android.animation.Animator;
@@ -20,10 +21,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.qd.douyinwu.R;
+import com.tiktokdemo.lky.tiktokdemo.Constant;
 import com.tiktokdemo.lky.tiktokdemo.record.adapter.TidalPatRecordFilterAdapter;
 import com.tiktokdemo.lky.tiktokdemo.record.bean.MusicBean;
 import com.tiktokdemo.lky.tiktokdemo.record.bean.TidalPatRecordDraftBean;
@@ -64,6 +69,8 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
     private final int VIDEO_COUNT_DOWN_TIME_6 = 6;
     private final int VIDEO_COUNT_DOWN_TIME_9 = 9;
 
+    private final String LOCAL_VIDEO_NAME = "RBB.mp4";
+    private String mLocalVideoPath = Constant.PIC_FILE + File.separator + LOCAL_VIDEO_NAME;
 
     private MagicCameraView mMagicCameraView;
 
@@ -82,6 +89,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
     private CountDownTextView mCountDownTxt;
 
 
+    private LinearLayout mSelectMusicLll;
     private View mFilterLayout;
     private RecyclerView mFilterRecyclerView;
     private CircleRecordView mCircleRecordView;
@@ -107,6 +115,9 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
     private MusicBean mMusicBean;
 
     private RecordVideoPresenter mPresenter;
+
+    private CheckBox mVideoSpeechcb;
+    private TextView mVideoSpeechTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +158,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
         super.onStop();
         isWindowGone = true;
         mPresenter.stopAudioRecord();
-        mFlashImg.setImageResource(R.mipmap.chaopai_luzhi_guanshanguangdeng);
+        mFlashImg.setImageResource(R.mipmap.avz);
         if(mPresenter.isRecording()){
             mCircleRecordView.cancelTouch();
         }
@@ -180,6 +191,8 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
 
 
     public void initView(){
+        mVideoSpeechcb =findViewById(R.id.tidal_pat_record_video_speech_cb);
+        mVideoSpeechTv =findViewById(R.id.tidal_pat_record_video_speech_tv);
         mMagicCameraView = findViewById(R.id.tidal_pat_record_camera_view);
         mMagicCameraView.setOnImageEncoderListener(mOnImageEncoderListener);
         mMagicCameraView.setOnMagicCameraOpenListener(mOnMagicCameraOpenListener);
@@ -212,6 +225,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
         tidalPatRecordFilterAdapter.setOnTidalPatFilterItemClickListener(mOnTidalPatFilterItemClickListener);
         mFilterRecyclerView.setAdapter(tidalPatRecordFilterAdapter);
 
+        mSelectMusicLll = findViewById(R.id.tidal_pat_record_video_select_music_ll);
 
         mCutAudioLayout = findViewById(R.id.tidal_pat_record_cut_audio_layout);
         mCutAudioScaleLayout = findViewById(R.id.tidal_pat_record_cut_audio_scale_layout);
@@ -257,6 +271,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
 //            isCanSaveVideo = true;
 //            mSaveImg.setImageResource(R.mipmap.chaopai_luzhi_wancheng);
 //        }
+
     }
 
 
@@ -663,7 +678,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
                 mRemoveView.setVisibility(isShow?(mPresenter.isRecordVideoInfoEmpty()? View.GONE:View.VISIBLE):
                         View.GONE);
                 mCutMusicImg.setImageResource((!mPresenter.isRecordVideoInfoEmpty() || mMusicBean == null || TextUtils
-                        .isEmpty(mMusicBean.getUrl()))?R.mipmap.btn_cut_dis:R.mipmap.chaopai_luzhi_jianyinyue);
+                        .isEmpty(mMusicBean.getUrl()))?R.mipmap.aaq:R.mipmap.aaq);
                 mCircleRecordView.setVisibility(isShow? View.VISIBLE: View.GONE);
                 mSpeedLevelControllerView.setVisibility((isShow && mPresenter.getRecordTimeType() == RecordTimeType.RECORD_TIME_15)?
                         View.VISIBLE: View.GONE);
@@ -678,7 +693,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
                 mRemoveView.setVisibility(isShow?(mPresenter.isRecordVideoInfoEmpty()? View.GONE:View.VISIBLE):
                         View.GONE);
                 mCutMusicImg.setImageResource((!mPresenter.isRecordVideoInfoEmpty() || mMusicBean == null || TextUtils
-                        .isEmpty(mMusicBean.getUrl()))?R.mipmap.btn_cut_dis:R.mipmap.chaopai_luzhi_jianyinyue);
+                        .isEmpty(mMusicBean.getUrl()))?R.mipmap.aaq:R.mipmap.aaq);
                 mSpeedLevelControllerView.setVisibility((isShow && mPresenter.getRecordTimeType() == RecordTimeType.RECORD_TIME_15)?
                         View.VISIBLE: View.GONE);
                 break;
@@ -701,7 +716,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
                 mRemoveView.setVisibility(isShow?(mPresenter.isRecordVideoInfoEmpty()? View.GONE:View.VISIBLE):
                         View.GONE);
                 mCutMusicImg.setImageResource((!mPresenter.isRecordVideoInfoEmpty() || mMusicBean == null || TextUtils
-                        .isEmpty(mMusicBean.getUrl()))?R.mipmap.btn_cut_dis:R.mipmap.chaopai_luzhi_jianyinyue);
+                        .isEmpty(mMusicBean.getUrl()))?R.mipmap.aaq:R.mipmap.aaq);
                 mCircleRecordView.setVisibility(isShow? View.VISIBLE: View.GONE);
                 mSpeedLevelControllerView.setVisibility((isShow && mPresenter.getRecordTimeType() == RecordTimeType.RECORD_TIME_15)?
                         View.VISIBLE: View.GONE);
@@ -737,7 +752,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
 
 
     @Override public void checkMusicEmpty() {
-        mCutMusicImg.setImageResource(R.mipmap.btn_cut_dis);
+        mCutMusicImg.setImageResource(R.mipmap.aaq);
     }
 
 
@@ -807,7 +822,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
     @Override
     public void recordProgressMax() {
         mCircleRecordView.setCanTouch(false);
-        mCountDownImg.setImageResource(R.mipmap.chaopa_daojishi_zhihui);
+        mCountDownImg.setImageResource(R.mipmap.b2j);
     }
 
     @Override
@@ -816,11 +831,11 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
         mSaveImg.setImageResource(R.mipmap.chaopai_luzhi_wanchenmoren);
         mRemoveView.setVisibility(View.GONE);
         if(mMusicBean == null || TextUtils.isEmpty(mMusicBean.getUrl()) || mPresenter.getRecordTimeType() != RecordTimeType.RECORD_TIME_15){
-            mCutMusicImg.setImageResource(R.mipmap.btn_cut_dis);
+            mCutMusicImg.setImageResource(R.mipmap.aaq);
         }else{
-            mCutMusicImg.setImageResource(R.mipmap.chaopai_luzhi_jianyinyue);
+            mCutMusicImg.setImageResource(R.mipmap.aaq);
         }
-        mCountDownImg.setImageResource(R.mipmap.chaopai_luzhi_daojishi);
+        mCountDownImg.setImageResource(R.mipmap.b2j);
         mCircleRecordView.setCanTouch(true);
         mPresenter.resetSpeedAudioMediaPlayer(mSpeedLevelControllerView.getSpeedLevel(),mBreakProgressView.getCurrentProgress(),mBreakProgressView.getMax());
     }
@@ -828,16 +843,16 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
     @Override
     public void deleteRecordVideoFinish(boolean isCanSave) {
         mCircleRecordView.setCanTouch(true);
-        mCountDownImg.setImageResource(R.mipmap.chaopai_luzhi_daojishi);
+        mCountDownImg.setImageResource(R.mipmap.b2j);
         mSpeedLevelControllerView.setCanTouch(true);
 //        mPresenter.setRecordTimeCount(mBreakProgressView.getCurrentProgress());
         mPresenter.resetSpeedAudioMediaPlayer(mSpeedLevelControllerView.getSpeedLevel(),mBreakProgressView.getCurrentProgress(),mBreakProgressView.getMax());
         if(!mPresenter.isRecordVideoInfoEmpty()){
-            mCutMusicImg.setImageResource(R.mipmap.btn_cut_dis);
+            mCutMusicImg.setImageResource(R.mipmap.aaq);
             mRemoveView.setVisibility(View.VISIBLE);
         }else{
             if(mMusicBean != null && !TextUtils.isEmpty(mMusicBean.getUrl()) && mPresenter.getRecordTimeType() == RecordTimeType.RECORD_TIME_15){
-                mCutMusicImg.setImageResource(R.mipmap.chaopai_luzhi_jianyinyue);
+                mCutMusicImg.setImageResource(R.mipmap.aaq);
             }
             mRemoveView.setVisibility(View.GONE);
         }
@@ -851,21 +866,21 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
     @Override
     public void changeFlashModeFinish(String flashMode) {
         if(flashMode.equals(Camera.Parameters.FLASH_MODE_ON) || flashMode.equals(Camera.Parameters.FLASH_MODE_TORCH)){
-            mFlashImg.setImageResource(R.mipmap.chaopai_luzhi_kaishanguangdeng);
+            mFlashImg.setImageResource(R.mipmap.avy);
         }else if(flashMode.equals(Camera.Parameters.FLASH_MODE_OFF)){
-            mFlashImg.setImageResource(R.mipmap.chaopai_luzhi_guanshanguangdeng);
+            mFlashImg.setImageResource(R.mipmap.avz);
         }
     }
 
     @Override
     public void switchCameraFinish() {
         mFlashImg.setVisibility(CameraEngine.getCameraInfo().isFront? View.GONE: View.VISIBLE);
-        mFlashImg.setImageResource(R.mipmap.chaopai_luzhi_guanshanguangdeng);
+        mFlashImg.setImageResource(R.mipmap.avz);
     }
 
     @Override
     public void changeBeautyOpenFinish(boolean isOpen) {
-        ((ImageView)findViewById(R.id.tidal_pat_record_video_beauty_img)).setImageResource(isOpen?R.mipmap.chaopai_luzhi_kaimeiyan:R.mipmap.chaopai_luzhi_guangmeiyan);
+        ((ImageView)findViewById(R.id.tidal_pat_record_video_beauty_img)).setImageResource(isOpen?R.mipmap.aii:R.mipmap.aii);
     }
 
 
@@ -906,6 +921,30 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
                 refreshAllFromRecordTime(RecordTimeType.RECORD_TIME_120);
             }
         });
+
+        mVideoSpeechcb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    mVideoSpeechTv.setText(getResources().getString(R.string.tidal_pat_speech_off));
+                    mSpeedLevelControllerView.setVisibility(View.INVISIBLE);
+                }else {
+                    mVideoSpeechTv.setText(getResources().getString(R.string.tidal_pat_speech_on));
+                    mSpeedLevelControllerView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        mSelectMusicLll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+          if(!FileUtils.checkFileExits(mLocalVideoPath)){
+            FileUtils.copyFileFromAssets(RecordVideoActivity.this,LOCAL_VIDEO_NAME, Constant.PIC_FILE);
+        }
+        Intent cropIntent = new Intent(RecordVideoActivity.this, VideoCropActivity.class);
+        cropIntent.putExtra("mCurrentVideoPath",mLocalVideoPath);
+        startActivity(cropIntent);
+            }
+        });
     }
 
     private void refreshAllFromRecordTime(RecordTimeType recordTimeType){
@@ -923,7 +962,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
             case RECORD_TIME_120:
                 mPresenter.setMaxRecordTime(mPresenter.VIDEO_RECORD_MAX_TIME_120);
                 mSpeedLevelControllerView.setVisibility(View.GONE);
-                mCutMusicImg.setImageResource(R.mipmap.btn_cut_dis);
+                mCutMusicImg.setImageResource(R.mipmap.aaq);
                 mBreakProgressView.setMax(mPresenter.getMaxRecordTime());
                 if(mMusicBean != null && !TextUtils.isEmpty(mMusicBean.getUrl())){
                     ToastTool.showShort(AppUtil.getApplicationContext(),R.string.tidal_pat_record_time_120_not_background_music);

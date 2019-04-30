@@ -3,47 +3,45 @@
     package="com.example.qd.douyinwu">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-   />
-    <!-- 闪关灯权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 闪关灯权限 -->
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.RECORD_VIDEO" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
     <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-
-    <!-- 一键分享 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" /> <!-- 一键分享 -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
-    <!-- 友盟统计 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- 友盟统计 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
+        android:name="com.tiktokdemo.lky.tiktokdemo.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/bpe"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/bpe"
         android:supportsRtl="true"
-        android:name="com.tiktokdemo.lky.tiktokdemo.BaseApplication"
         android:theme="@style/AppTheme2">
+        <activity android:name=".DyMainActivity"></activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme2.NoActionBar" />
 
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5934cbf475ca350c06000cfb" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Umeng" />
-        <!-- android 全面屏 -->
+            android:value="Umeng" /> <!-- android 全面屏 -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
@@ -71,15 +69,15 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
-        <!-- 微信分享回调 -->
+        </activity> <!-- 微信分享回调 -->
         <activity
-            android:name="com.example.qd.douyinwu.wxapi.WXEntryActivity"
+            android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
@@ -89,20 +87,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            ></activity>
-        <activity android:name="com.fly.video.downloader.DownloadVideoActivity"
-            android:launchMode="singleInstance"></activity>
+            android:windowSoftInputMode="adjustPan" />
 
-        <activity android:name="com.tiktokdemo.lky.tiktokdemo.record.RecordVideoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.tiktokdemo.lky.tiktokdemo.record.VideoPlayActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity"
-            android:screenOrientation="portrait"/>
         <activity-alias
             android:name="com.fly.video.downloader.ShareActivity"
             android:icon="@mipmap/ic_launcher"
@@ -110,6 +100,7 @@
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <action android:name="android.intent.action.SEND" />
                 <!-- <action android:name="android.intent.action.SEND_MULTIPLEND"/> -->
                 <data android:mimeType="text/plain" />
@@ -122,8 +113,20 @@
                 <data android:mimeType="audio/amr"/>
                 -->
             </intent-filter>
-
         </activity-alias>
+
+        <activity
+            android:name="com.fly.video.downloader.DownloadVideoActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name="com.tiktokdemo.lky.tiktokdemo.record.RecordVideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.tiktokdemo.lky.tiktokdemo.record.VideoPlayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

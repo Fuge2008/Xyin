@@ -89,9 +89,7 @@ public class MainActivity extends FragmentActivity {
     private DYLoadingView dyLoadingView;
 
     private final String LOCAL_MUSIC_NAME = "RISE.mp3";
-    private final String LOCAL_VIDEO_NAME = "RBB.mp4";
     private String mLocalMusicPath = Constant.PIC_FILE + File.separator + LOCAL_MUSIC_NAME;
-    private String mLocalVideoPath = Constant.PIC_FILE + File.separator + LOCAL_VIDEO_NAME;
 
     /**
      * 默认从第一个开始播放
@@ -162,12 +160,6 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-//        if(!FileUtils.checkFileExits(mLocalVideoPath)){
-//            FileUtils.copyFileFromAssets(this,LOCAL_VIDEO_NAME,Constant.PIC_FILE);
-//        }
-//        Intent cropIntent = new Intent(this, VideoCropActivity.class);
-//        cropIntent.putExtra("mCurrentVideoPath",mLocalVideoPath);
-//        startActivity(cropIntent);
     }
 
     private void setInit() {

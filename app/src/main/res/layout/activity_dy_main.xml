@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DyMainActivity">
+    <FrameLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_bar"
+        android:orientation="vertical" />
+    <LinearLayout
+        android:id="@+id/main_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="00ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.example.qd.douyinwu.view.ImageTextButton
+            android:id="@+id/ib_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            app:iDivider="1.5dp"
+            app:iconId="@drawable/icon_titlebar_whitescan_on"
+            app:iconSize="25dp"
+            app:text="首页"
+            app:textColor="@color/white" />
+
+        <com.example.qd.douyinwu.view.ImageTextButton
+            android:id="@+id/ib_shop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            app:iDivider="1.5dp"
+            app:iconId="@drawable/icon_titlebar_whitescan_on"
+            app:iconSize="25dp"
+            app:text="首页"
+            app:textColor="@color/white" />
+
+        <!--悬浮占位选项-->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <com.example.qd.douyinwu.view.ImageTextButton
+                android:id="@+id/ib_car"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                app:iDivider="1.5dp"
+                app:iconId="@drawable/icon_titlebar_whitescan_on"
+                app:iconSize="25dp"
+                app:text="首页"
+                app:textColor="@color/white" />
+            <com.example.qd.douyinwu.view.DragPointView
+                android:id="@+id/seal_num"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:textColor="#ffffff"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="4dp"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+
+        <com.example.qd.douyinwu.view.ImageTextButton
+            android:id="@+id/ib_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            app:iDivider="1.5dp"
+            app:iconId="@drawable/icon_titlebar_whitescan_on"
+            app:iconSize="25dp"
+            app:text="首页"
+            app:textColor="@color/white" />
+
+    </LinearLayout>
+
+</RelativeLayout>

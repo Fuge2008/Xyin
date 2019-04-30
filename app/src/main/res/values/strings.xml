@@ -35,6 +35,8 @@
     <string name="news_hipster_content">这些都是嘿吼的最新潮人,观看视频膜拜下吧~</string>
     <string name="tidal_pat_hint">喜欢就要说出来</string>
     <string name="tidal_pat_cut_music">剪音乐</string>
+    <string name="tidal_pat_speech_on">速度开</string>
+    <string name="tidal_pat_speech_off">速度关</string>
     <string name="tidal_pat_cover_selected">选封面</string>
     <string name="tidal_pat_volume">音量</string>
     <string name="tidal_pat_special_effects">特效</string>
@@ -174,4 +176,5 @@
     <string name="user_name">西北老狼michael</string>
     <string name="user_des">谁能像优乐美一样把我捧在手心，我就能让他的儿子长的更帅女儿长的更漂亮</string>
     <string name="user_recommend_tip">TA推荐的好书</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

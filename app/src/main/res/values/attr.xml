@@ -804,4 +804,14 @@
         <attr name="wave_bottom_color" format="color"/>
         <attr name="wave_frequency" format="float" />
     </declare-styleable>
+    <!--带图标文字button-->
+    <declare-styleable name="ImageTextButton">
+        <attr name="iconId" format="reference"/>
+        <attr name="text" format="string"/>
+        <attr name="textColor" format="color"/>
+        <attr name="iconSize" format="dimension"/>
+        <attr name="iMarginTop" format="dimension"/>
+        <attr name="iMarginBottom" format="dimension"/>
+        <attr name="iDivider" format="dimension"/>
+    </declare-styleable>
 </resources>
