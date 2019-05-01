@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.fly.video.downloader.DownloadVideoActivity;
 import com.fly.video.downloader.core.Validator;
 import com.fly.video.downloader.core.content.ClipboardManager;

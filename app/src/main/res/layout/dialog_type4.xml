@@ -28,6 +28,7 @@
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="9dp"
+                    android:visibility="gone"
                     android:layout_centerVertical="true"
                     android:src="@drawable/back_down" />
 
@@ -37,8 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="全部评论(253)"
-                android:textColor="#FF333333"
+                android:text="578条评论"
+                android:textColor="@color/pure_black"
                 android:textSize="13sp" />
         </RelativeLayout>
 

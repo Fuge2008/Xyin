@@ -17,7 +17,7 @@
 package com.tiktokdemo.lky.tiktokdemo.record.camera.filter.base.gpuimage;
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.tiktokdemo.lky.tiktokdemo.record.camera.utils.OpenGlUtils;
 
 public class GPUImageLookupFilter extends GPUImageTwoInputFilter {

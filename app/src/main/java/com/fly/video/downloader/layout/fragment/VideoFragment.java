@@ -1,6 +1,11 @@
 package com.fly.video.downloader.layout.fragment;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,12 +14,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
+import com.fuge.xyin.SearchVideoActivity;
+import com.fuge.xyin.utils.ToastUtils;
 import com.fly.video.downloader.DownloadVideoActivity;
+import com.fly.video.downloader.core.Validator;
 import com.fly.video.downloader.layout.listener.VideoFragmentListener;
 import com.fly.video.downloader.util.content.Recv;
 import com.fly.video.downloader.util.content.analyzer.AnalyzerTask;
@@ -31,6 +44,7 @@ import com.fly.video.downloader.util.model.Video;
 public class VideoFragment extends Fragment {
 
     protected VideoFragmentListener mFragmentListener;
+    private LinearLayout mSearchVideoList;
 
     public VideoFragment() {
 
@@ -76,7 +90,8 @@ public class VideoFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (R.id.video_menu_search == item.getItemId()){
-            ((DownloadVideoActivity)getActivity()).showVideoSearchFragment();
+            //((DownloadVideoActivity)getActivity()).showVideoSearchFragment();
+            showPhotoDialog();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -86,13 +101,19 @@ public class VideoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_video, container, false);
-
+        mSearchVideoList = view.findViewById(R.id.mSearchVideoList);
         mFragmentListener.onCreateView(view);
 
         Recv recv = new Recv(this.getActivity().getIntent());
         if (recv.isActionSend() && isAdded())
             Analyze(recv.getContent());
-
+        showPhotoDialog();
+        mSearchVideoList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            startActivity(new Intent(getActivity(),SearchVideoActivity.class));
+            }
+        });
         return view;
     }
 
@@ -153,4 +174,54 @@ public class VideoFragment extends Fragment {
         mFragmentListener.onAnalyzed(video, fromHistory);
     }
 
+    private void showPhotoDialog() {
+        final AlertDialog dlg = new AlertDialog.Builder(
+                getActivity()).create();
+        dlg.show();
+        Window window = dlg.getWindow();
+        window.setContentView(R.layout.dialog_social_delete);
+        TextView tvCancel = window.findViewById(R.id.tvCancel);
+        TextView tvOk =window.findViewById(R.id.tvOk);
+        final EditText tvContent =  window.findViewById(R.id.tvContent);
+        ImageView ivClose = window.findViewById(R.id.ivClose);
+
+        tvOk.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //关闭对话框
+                String str =  tvContent.getText().toString();
+                if (str.isEmpty() || !Validator.containsUrl(str))
+                {
+                    Toast.makeText(getActivity(), R.string.noURL, Toast.LENGTH_SHORT).show();
+                } else {
+                    ((DownloadVideoActivity)getActivity()).onVideoChange(str);
+                    tvContent.setText("");
+                    dlg.cancel();
+                }
+
+            }
+        });
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    PackageManager packageManager = getActivity().getPackageManager();
+                    //Intent intent = new Intent();
+                    Intent intent = packageManager.getLaunchIntentForPackage("com.ss.android.ugc.aweme");
+                    getActivity().startActivity(intent);
+                    com.fly.video.downloader.core.app.Process.background((Activity) getActivity());
+                    ToastUtils.showShortToast(getActivity(),"前往抖音");
+                } catch (ActivityNotFoundException e) {
+                    // TODO: handle exception
+                    ToastUtils.showShortToast(getActivity(),"该功能待小主开发");
+                }
+            }
+        });
+        ivClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dlg.cancel();
+            }
+        });
+
+    }
 }

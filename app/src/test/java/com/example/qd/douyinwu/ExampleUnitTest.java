@@ -1,4 +1,4 @@
-package com.example.qd.douyinwu;
+package com.fuge.xyin;
 
 import org.junit.Test;
 

@@ -13,7 +13,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 /**
  * Created by lky on 2016/11/24.

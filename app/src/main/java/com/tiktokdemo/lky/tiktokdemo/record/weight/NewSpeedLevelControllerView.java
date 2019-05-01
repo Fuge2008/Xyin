@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.heyhou.social.video.VideoTimeType;
 
 

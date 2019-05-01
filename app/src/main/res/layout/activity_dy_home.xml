@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/mian_app_theme_color"
+    tools:context="com.fuge.xyin.HomeActivity">
+    <com.fuge.xyin.view.NoScrollViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" />
+    <RelativeLayout
+        android:id="@+id/rl_home_tab"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        >
+        <com.fuge.xyin.view.tab.SlidingTabLayout
+            android:background="#32000000"
+            android:id="@+id/mSlidingTab"
+            android:layout_width="match_parent"
+            app:tl_textBold="BOTH"
+            android:layout_height="match_parent"
+            tl:tl_divider_color="#10ffffff"
+            tl:tl_divider_padding="16dp"
+            tl:tl_indicator_color="@color/mian_text_select"
+            tl:tl_indicator_height="2dp"
+            tl:tl_indicator_width_equal_title="true"
+            app:tl_tab_space_equal="true"
+            tl:tl_tab_padding="12dp"
+            tl:tl_textSelectColor="@color/mian_text_select"
+            tl:tl_textUnselectColor="@color/mian_text_unselect"
+            tl:tl_textsize="18sp"
+            tl:tl_underline_color="@color/mian_text_unselect_1"
+            tl:tl_underline_height="0dp" />
+        <ImageView
+            android:id="@+id/iv_doview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/akq" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

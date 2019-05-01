@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.tiktokdemo.lky.tiktokdemo.record.camera.widget.CommRecyclerViewHolder;
 import com.tiktokdemo.lky.tiktokdemo.record.helper.MagicFilterFactory;
 import com.tiktokdemo.lky.tiktokdemo.record.helper.TidalPatFilterType;

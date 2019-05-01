@@ -27,7 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.tiktokdemo.lky.tiktokdemo.Constant;
 import com.tiktokdemo.lky.tiktokdemo.record.adapter.TidalPatRecordFilterAdapter;
 import com.tiktokdemo.lky.tiktokdemo.record.bean.MusicBean;
@@ -69,7 +69,7 @@ public class RecordVideoActivity extends Activity implements View.OnClickListene
     private final int VIDEO_COUNT_DOWN_TIME_6 = 6;
     private final int VIDEO_COUNT_DOWN_TIME_9 = 9;
 
-    private final String LOCAL_VIDEO_NAME = "RBB.mp4";
+    private final String LOCAL_VIDEO_NAME = "RBB2.mp4";
     private String mLocalVideoPath = Constant.PIC_FILE + File.separator + LOCAL_VIDEO_NAME;
 
     private MagicCameraView mMagicCameraView;

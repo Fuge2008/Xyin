@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Patterns;
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.fly.video.downloader.core.contract.AbstractSingleton;
 import com.fly.video.downloader.core.exception.HttpException;
 import com.fly.video.downloader.core.exception.URLInvalidException;

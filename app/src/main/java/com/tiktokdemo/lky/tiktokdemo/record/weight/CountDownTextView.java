@@ -12,7 +12,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.BounceInterpolator;
 
 import com.tiktokdemo.lky.tiktokdemo.utils.DensityUtils;
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 
 /**

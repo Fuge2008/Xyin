@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#141414"
     android:orientation="vertical">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/background_img"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="-100dp"
+        android:layout_marginTop="-50dp"
         android:contentDescription="@null"
-        android:scaleType="fitXY"
-        android:src="@drawable/scrollview_header" />
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg_fuge9" />
 
-    <com.example.qd.douyinwu.view.PullScrollView
+    <com.fuge.xyin.view.PullScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,173 +38,267 @@
             <RelativeLayout
                 android:id="@+id/scroll_view_head"
                 android:layout_width="match_parent"
-                android:layout_height="112dp"
-                android:layout_marginTop="100dp"
-                android:background="@color/transparent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="150dp"
                 android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="85dp"
-                    android:layout_marginTop="27dp"
-                    android:background="@drawable/card_avatar_bar">
-
-                    <TextView
-                        android:id="@+id/attention_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/selector_btn"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="21dp"
-                        android:layout_marginTop="6dp"
-                        android:drawableLeft="@drawable/add"
-                        android:drawablePadding="3dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:gravity="center_vertical"
-                        android:text="关注"
-                        android:textSize="13sp"
-                        android:textColor="#57AF4E" />
-
-                    <TextView
-                        android:id="@+id/user_post"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="103dp"
-                        android:layout_marginTop="4dp"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:text="@string/user_post"
-                        android:textSize="12sp"
-                        android:textColor="#A1A1A1" />
-
-                    <TextView
-                        android:id="@+id/user_book"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="103dp"
-                        android:layout_below="@id/user_post"
-                        android:layout_marginTop="4dp"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:text="@string/user_book"
-                        android:textSize="12sp"
-                        android:textColor="#A1A1A1" />
-                </RelativeLayout>
-
                 <ImageView
-                    android:id="@+id/user_avatar"
-                    android:layout_width="68dp"
-                    android:layout_height="68dp"
-                    android:padding="1px"
-                    android:background="@android:color/white"
-                    android:layout_marginLeft="21dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/avatar_default" />
-
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/user_avatar"
-                    android:layout_marginLeft="13dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:shadowColor="@android:color/black"
-                    android:shadowDx="3.0"
-                    android:shadowDy="3.0"
-                    android:shadowRadius="5.0"
-                    android:text="@string/user_name"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/white" />
-
-                <FrameLayout
-                    android:id="@+id/user_divider_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/user_avatar"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginRight="21dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_marginTop="5dp"
-                        android:contentDescription="@null"
-                        android:background="#DFDFDF" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="29dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/arrow_up" />
-                </FrameLayout>
-
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/b7r"/>
+                <com.fuge.xyin.view.CircleImageView
+                    android:id="@+id/mUserHeadCiv"
+                    android:layout_width="80dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/bg_fuge9"/>
                 <TextView
-                    android:id="@+id/user_des"
+                    android:id="@+id/mEditInfoTv"
+                    android:layout_toRightOf="@+id/mUserHeadCiv"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center"
+                    android:textColor="@color/mian_text_select"
+                    android:background="#80999999"
+                    android:textSize="14sp"
+                    android:text="编辑资料"/>
+                <RelativeLayout
+                    android:id="@+id/mAddFriendLl"
+                    android:layout_toRightOf="@+id/mEditInfoTv"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="35dp"
+                    android:background="#80999999"
+                    android:layout_height="35dp">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/bjp"/>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/mUserNameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/user_divider_layout"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginRight="21dp"
-                    android:layout_marginTop="8dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:text="@string/user_des"
-                    android:textSize="12sp"
-                    android:textColor="#B1B1B1" />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/ll_temp"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/ll_user_container"
+                    android:layout_below="@+id/mUserHeadCiv"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/mian_text_select"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="fuge567"/>
+                <TextView
+                    android:id="@+id/mDouyinNumTv"
+                    android:layout_below="@+id/mUserNameTv"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/mian_text_select"
+                    android:textSize="12sp"
+                    android:text="抖音号：7758258"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/mDouyinNumTv"
+                    android:layout_height="0.1dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/color_999999" />
+                <TextView
+                    android:id="@+id/mTipTv"
+                    android:layout_below="@+id/mDouyinNumTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/mian_text_unselect"
+                    android:textSize="12sp"
+                    android:text="填写个性签名更容易获得别人的关注哦"/>
+                <LinearLayout
+                    android:id="@+id/mSignLl"
+                    android:layout_below="@+id/mTipTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_below="@+id/mUserNameTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/header_icon_1" />
-
+                        android:layout_marginTop="10dp"
+                        android:padding="2dp"
+                        android:textColor="@color/mian_text_unselect"
+                        android:textSize="12sp"
+                        android:background="#80999999"
+                        android:text="22岁"/>
+                    <TextView
+                        android:layout_below="@+id/mUserNameTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:padding="2dp"
+                        android:textColor="@color/mian_text_unselect"
+                        android:textSize="12sp"
+                        android:background="#80999999"
+                        android:text="中国 深圳"/>
+                    <TextView
+                        android:layout_below="@+id/mUserNameTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:padding="2dp"
+                        android:textColor="@color/mian_text_unselect"
+                        android:textSize="12sp"
+                        android:background="#80999999"
+                        android:text="放牛娃"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/mDataInTotalLl"
+                    android:layout_below="@+id/mSignLl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_below="@+id/mUserNameTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="2dp"
+                        android:textColor="@color/mian_text_unselect"
+                        android:textSize="14sp"
+                        android:text="99获赞"/>
+                    <TextView
+                        android:layout_below="@+id/mUserNameTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:padding="2dp"
+                        android:textColor="@color/mian_text_unselect"
+                        android:textSize="14sp"
+                        android:text="953关注"/>
+                    <TextView
+                        android:layout_below="@+id/mUserNameTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:padding="2dp"
+                        android:textColor="@color/mian_text_unselect"
+                        android:textSize="14sp"
+                        android:text="100关注"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/mAddTakePhotoRl"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/mDataInTotalLl"
+                    android:layout_height="35dp"
+                    android:background="#80999999"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                   >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/b3e"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Google" />
-
+                        android:text="添加随拍"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/mian_text_unselect"
+                        android:textSize="16sp"/>
+                    </LinearLayout>
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/mTabLl"
+                    android:layout_below="@+id/mAddTakePhotoRl"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <com.fuge.xyin.view.tab.SlidingTabLayout
+                        android:id="@+id/mSlidingTab"
+                        android:layout_width="match_parent"
+                        app:tl_textBold="BOTH"
+                        android:layout_height="40dp"
+                        tl:tl_divider_color="#10ffffff"
+                        tl:tl_divider_padding="16dp"
+                        tl:tl_indicator_color="@color/mian_text_select"
+                        tl:tl_indicator_height="2dp"
+                        tl:tl_indicator_width_equal_title="true"
+                        app:tl_tab_space_equal="true"
+                        tl:tl_tab_padding="12dp"
+                        tl:tl_textSelectColor="@color/mian_text_select"
+                        tl:tl_textUnselectColor="@color/mian_text_unselect"
+                        tl:tl_textsize="16sp"
+                        tl:tl_underline_color="#FFE43C"
+                        tl:tl_underline_height="0dp" />
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/view_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                         />
                 </LinearLayout>
-
-                <com.android.elong.WaveLineCenterView
-                    android:id="@+id/wl_center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_alignParentBottom="true"
-                    app:wave_amplifier="20"
-                    app:wave_bottom_color="#ff99cc"
-                    app:wave_first_color="#ff99cc"
-                    app:wave_frequency="1.0"
-                    app:wave_line_width="25dp"
-                    app:wave_phase="45"
-                    android:visibility="gone"
-                    app:wave_phase_second="45"
-                    app:wave_second_color="#00000000" />
-
-
             </RelativeLayout>
-
            </LinearLayout>
-    </com.example.qd.douyinwu.view.PullScrollView>
+    </com.fuge.xyin.view.PullScrollView>
+    </RelativeLayout>
+</ScrollView>
+    <RelativeLayout
+        android:id="@+id/ll_temp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_user_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/b0q" />
+
+        </LinearLayout>
+
+        <com.fuge.xyin.view.WaveLineCenterView
+            android:id="@+id/wl_center"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            app:wave_amplifier="20"
+            app:wave_bottom_color="#00ffffff"
+            app:wave_first_color="#00ffffff"
+            app:wave_frequency="1.0"
+            app:wave_line_width="25dp"
+            app:wave_phase="45"
+            android:visibility="invisible"
+            app:wave_phase_second="45"
+            app:wave_second_color="#00ffffff" />
+    </RelativeLayout>
 
 </RelativeLayout>

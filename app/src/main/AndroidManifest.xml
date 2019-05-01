@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.qd.douyinwu">
+    package="com.fuge.xyin">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -30,18 +30,15 @@
         android:roundIcon="@mipmap/bpe"
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
-        <activity android:name=".DyMainActivity"></activity>
-        <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme2.NoActionBar" />
+        <activity android:name="com.fuge.xyin.DyMainActivity" />
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5934cbf475ca350c06000cfb" />
+            android:value="5ccab4264ca3571a2500046c" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Umeng" /> <!-- android 全面屏 -->
+            android:value="Umeng" />
+        <!-- android 全面屏 -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
@@ -71,16 +68,17 @@
             </intent-filter>
         </activity> <!-- 微信分享回调 -->
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.fuge.xyin.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:name="com.fuge.xyin.SplashActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="standard"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -88,8 +86,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.fuge.xyin.HomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="standard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
@@ -97,7 +96,7 @@
             android:name="com.fly.video.downloader.ShareActivity"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/share_recv_name"
-            android:targetActivity=".MainActivity">
+            android:targetActivity="com.fuge.xyin.HomeActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -117,7 +116,7 @@
 
         <activity
             android:name="com.fly.video.downloader.DownloadVideoActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="standard" />
         <activity
             android:name="com.tiktokdemo.lky.tiktokdemo.record.RecordVideoActivity"
             android:screenOrientation="portrait" />
@@ -127,6 +126,7 @@
         <activity
             android:name="com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="com.fuge.xyin.SearchVideoActivity"></activity>
     </application>
 
 </manifest>

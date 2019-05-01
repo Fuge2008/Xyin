@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.fly.video.downloader.GlideApp;
 
 import com.fly.video.downloader.layout.listener.HistoryFragmentListener;

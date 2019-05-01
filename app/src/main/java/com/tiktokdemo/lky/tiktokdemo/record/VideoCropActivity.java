@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.tiktokdemo.lky.tiktokdemo.Constant;
 import com.tiktokdemo.lky.tiktokdemo.HomeCallBack;
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.tiktokdemo.lky.tiktokdemo.record.bean.TidalPatRecordDraftBean;
 import com.tiktokdemo.lky.tiktokdemo.record.helper.RecordTimeType;
 import com.tiktokdemo.lky.tiktokdemo.record.manager.SpecialEffectsPlayManager;

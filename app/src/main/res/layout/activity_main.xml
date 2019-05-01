@@ -10,11 +10,11 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <com.example.qd.douyinwu.view.Love
+    <com.fuge.xyin.view.Love
         android:id="@+id/love"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.example.qd.douyinwu.view.Love>
+    </com.fuge.xyin.view.Love>
     <TextView
         android:id="@+id/tv_shape"
         android:layout_width="match_parent"
@@ -219,7 +219,7 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <com.example.qd.douyinwu.view.DYLoadingView
+    <com.fuge.xyin.view.DYLoadingView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000000"

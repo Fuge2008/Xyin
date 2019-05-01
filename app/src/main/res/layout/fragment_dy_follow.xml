@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mian_app_theme_color"
+    android:fitsSystemWindows="true"
+    tools:context="com.fuge.xyin.fragment.DyFollowFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_home_tab"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <LinearLayout
+            android:id="@+id/mTabLl"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <com.fuge.xyin.view.tab.SlidingTabLayout
+                android:id="@+id/mSlidingTab"
+                android:layout_width="match_parent"
+                app:tl_textBold="BOTH"
+                android:layout_height="match_parent"
+                tl:tl_divider_color="#10ffffff"
+                tl:tl_divider_padding="16dp"
+                tl:tl_indicator_color="@color/mian_text_select"
+                tl:tl_indicator_height="2dp"
+                tl:tl_indicator_width_equal_title="true"
+                app:tl_tab_space_equal="true"
+                tl:tl_tab_padding="12dp"
+                tl:tl_textSelectColor="@color/mian_text_select"
+                tl:tl_textUnselectColor="@color/mian_text_unselect"
+                tl:tl_textsize="18sp"
+                tl:tl_underline_color="#FFE43C"
+                tl:tl_underline_height="0dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mTakePhotoLl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:src="@mipmap/ak1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:text="随拍"
+                android:textColor="@color/color_white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mFriendListTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="10dp"
+            android:text="好友列表"
+            android:textColor="@color/color_white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/line"
+        android:layout_below="@+id/rl_home_tab"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/color_999999" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line"
+        android:background="#ffffff" />
+</RelativeLayout>

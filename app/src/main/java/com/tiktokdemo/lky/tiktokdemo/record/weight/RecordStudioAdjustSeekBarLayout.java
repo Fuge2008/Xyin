@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tiktokdemo.lky.tiktokdemo.utils.DensityUtils;
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 
 /**

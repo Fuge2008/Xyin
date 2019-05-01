@@ -20,8 +20,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.qd.douyinwu.MainActivity;
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.HomeActivity;
+import com.fuge.xyin.R;
 import com.tiktokdemo.lky.tiktokdemo.Constant;
 
 import com.tiktokdemo.lky.tiktokdemo.record.bean.MusicBean;
@@ -311,7 +311,7 @@ public class VideoPlayActivity extends Activity implements View.OnClickListener,
             e.printStackTrace();
         }
         SpecialEffectsPlayManager.stopPlay();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this,HomeActivity.class);
         intent.putExtra("isJumpHome",isJumpHome);
         startActivity(intent);
     }

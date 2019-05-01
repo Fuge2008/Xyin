@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.tiktokdemo.lky.tiktokdemo.record.camera.widget.CommRecyclerViewHolder;
 import com.tiktokdemo.lky.tiktokdemo.record.helper.TidalPatPropFactory;
 import com.tiktokdemo.lky.tiktokdemo.record.helper.TidalPatPropType;

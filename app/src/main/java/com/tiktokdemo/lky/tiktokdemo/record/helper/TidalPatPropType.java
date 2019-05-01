@@ -1,7 +1,7 @@
 package com.tiktokdemo.lky.tiktokdemo.record.helper;
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 /**
  * Created by lky on 2017/5/3.

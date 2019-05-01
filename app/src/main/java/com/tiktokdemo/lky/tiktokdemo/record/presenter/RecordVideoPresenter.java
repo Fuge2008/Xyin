@@ -5,7 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.text.TextUtils;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.heyhou.social.video.HeyhouRecorder;
 import com.heyhou.social.video.HeyhouVideo;
 import com.heyhou.social.video.VideoInfo;

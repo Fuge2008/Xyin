@@ -16,7 +16,7 @@
 //import android.view.View;
 //import android.widget.Toast;
 //
-//import com.example.qd.douyinwu.R;
+//import com.fuge.xyin.R;
 //import com.tiktokdemo.lky.tiktokdemo.record.RecordVideoActivity;
 //import com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity;
 //import com.tiktokdemo.lky.tiktokdemo.record.bean.MusicBean;
@@ -25,8 +25,8 @@
 //
 //public class DownloadVideoActivity extends AppCompatActivity implements View.OnClickListener {
 //
-//    private final String LOCAL_MUSIC_NAME = "RISE.mp3";
-//    private final String LOCAL_VIDEO_NAME = "RBB.mp4";
+//    private final String LOCAL_MUSIC_NAME = "RISE2.mp3";
+//    private final String LOCAL_VIDEO_NAME = "RBB2.mp4";
 //    private String mLocalMusicPath = Constant.PIC_FILE + File.separator + LOCAL_MUSIC_NAME;
 //    private String mLocalVideoPath = Constant.PIC_FILE + File.separator + LOCAL_VIDEO_NAME;
 //

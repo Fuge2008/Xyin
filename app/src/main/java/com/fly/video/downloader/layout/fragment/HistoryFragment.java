@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.fly.video.downloader.layout.listener.HistoryFragmentListener;
 import com.fly.video.downloader.util.content.history.History;
 import com.fly.video.downloader.util.model.Video;

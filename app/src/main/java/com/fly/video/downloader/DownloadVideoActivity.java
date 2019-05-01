@@ -1,5 +1,8 @@
 package com.fly.video.downloader;
 
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,10 +11,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.fly.video.downloader.core.app.BaseActivity;
 import com.fly.video.downloader.layout.fragment.HistoryFragment;
 import com.fly.video.downloader.layout.fragment.VideoFragment;
@@ -20,6 +28,8 @@ import com.fly.video.downloader.util.content.Recv;
 import com.fly.video.downloader.util.model.Video;
 import com.github.florent37.runtimepermission.RuntimePermission;
 import com.github.florent37.runtimepermission.callbacks.PermissionListener;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -42,7 +52,7 @@ public class DownloadVideoActivity extends BaseActivity {
     private Unbinder unbinder;
     protected VideoFragment videoFragment;
     protected HistoryFragment historyFragment;
-    protected VideoSearchFragment searchFragment = null;
+   // protected VideoSearchFragment searchFragment = null;
 
     private Date backPressAt = null;
     private boolean fromSend = false;
@@ -94,17 +104,7 @@ public class DownloadVideoActivity extends BaseActivity {
 
         fromSend = this.getIntent() != null && Intent.ACTION_SEND.equals(this.getIntent().getAction());
 
-        askPermission(this).ask(new PermissionListener() {
-            @Override
-            public void onAccepted(RuntimePermission runtimePermission, List<String> accepted) {
-                Toast.makeText(DownloadVideoActivity.this,"OK", Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onDenied(RuntimePermission runtimePermission, List<String> denied, List<String> foreverDenied) {
-                Toast.makeText(DownloadVideoActivity.this,"Why?", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -114,37 +114,37 @@ public class DownloadVideoActivity extends BaseActivity {
         unbinder.unbind();
     }
 
-    @Override
-    public void onBackPressed() {
-        FragmentManager fm = getSupportFragmentManager();
-
-        // 最后一次 并且大于2秒
-        if (fm.getBackStackEntryCount() == 0 && !fromSend) {
-            if (backPressAt == null || new Date().getTime() - backPressAt.getTime() > 2000) {
-                Toast.makeText(this, R.string.one_more_exit, Toast.LENGTH_SHORT).show();
-                backPressAt = new Date();
-                return;
-            } else {
-                com.fly.video.downloader.core.app.Process.background(this);
-                //super.onBackPressed();
-                return;
-            }
-        }
-
-        if (fm.getBackStackEntryCount() > 0) {
-            FragmentManager.BackStackEntry back = fm.getBackStackEntryAt(fm.getBackStackEntryCount() -1);
-            switch (back.getName())
-            {
-                case "video":
-                    showFragment(videoFragment);
-                    break;
-            }
-
-            fm.popBackStack();
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        FragmentManager fm = getSupportFragmentManager();
+//
+//        // 最后一次 并且大于2秒
+//        if (fm.getBackStackEntryCount() == 0 && !fromSend) {
+//            if (backPressAt == null || new Date().getTime() - backPressAt.getTime() > 2000) {
+//                Toast.makeText(this, R.string.one_more_exit, Toast.LENGTH_SHORT).show();
+//                backPressAt = new Date();
+//                return;
+//            } else {
+//                com.fly.video.downloader.core.app.Process.background(this);
+//                //super.onBackPressed();
+//                return;
+//            }
+//        }
+//
+//        if (fm.getBackStackEntryCount() > 0) {
+//            FragmentManager.BackStackEntry back = fm.getBackStackEntryAt(fm.getBackStackEntryCount() -1);
+//            switch (back.getName())
+//            {
+//                case "video":
+//                    showFragment(videoFragment);
+//                    break;
+//            }
+//
+//            fm.popBackStack();
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -172,17 +172,17 @@ public class DownloadVideoActivity extends BaseActivity {
         progressBar.setProgress(progress);
     }
 
-    public void showVideoSearchFragment()
-    {
-        if (null == searchFragment)
-            searchFragment = VideoSearchFragment.newInstance();
-
-        if (!searchFragment.isAdded())
-            getSupportFragmentManager().beginTransaction().add(R.id.no_navigation_pager, searchFragment).commit();
-
-        showFragment(searchFragment);
-        getSupportFragmentManager().beginTransaction().addToBackStack("video").commit();
-    }
+//    public void showVideoSearchFragment()
+//    {
+//        if (null == searchFragment)
+//            searchFragment = VideoSearchFragment.newInstance();
+//
+//        if (!searchFragment.isAdded())
+//            getSupportFragmentManager().beginTransaction().add(R.id.no_navigation_pager, searchFragment).commit();
+//
+//        showFragment(searchFragment);
+//        getSupportFragmentManager().beginTransaction().addToBackStack("video").commit();
+//    }
 
     public void onVideoChange(String str)
     {

@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     android:clickable="true">
 
-    <com.example.qd.douyinwu.utils.MyVideoPlayer
+    <com.fuge.xyin.utils.MyVideoPlayer
         android:id="@+id/jzVideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="111"
+                android:text="211"
                 android:textColor="#FFFFFF"
                 android:layout_gravity="center_horizontal"
                 android:textSize="12sp" />
@@ -130,12 +130,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="60dp"
-                android:text="111"
+                android:text="101"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
         </LinearLayout>
-        <com.example.qd.douyinwu.view.MusicalNoteLayout
+        <com.fuge.xyin.view.MusicalNoteLayout
             android:id="@+id/music_note_layout"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -165,7 +165,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
                 android:gravity="top"
-                android:text="'@fuge"
+                android:text="fuge@"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -177,7 +177,7 @@
                 android:layout_marginTop="3dp"
                 android:gravity="top"
                 android:lineSpacingExtra="3dp"
-                android:text="相思相见知何日，此时此刻难为情！入我相思门，方知相思苦。"
+                android:text="免责声明：此项目由fuge编写，仅用于学习交流，禁止用于其他商业目的，否则后果自负。"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
         </RelativeLayout>
@@ -194,7 +194,7 @@
                 android:layout_height="17dp"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/au_"/>
-            <com.example.qd.douyinwu.view.MarqueeTextView
+            <com.fuge.xyin.view.MarqueeTextView
                 android:id="@+id/marquee1"
                 android:layout_width="120dp"
                 android:singleLine="true"

@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 /**
  * Created by 1 on 2016/10/13.

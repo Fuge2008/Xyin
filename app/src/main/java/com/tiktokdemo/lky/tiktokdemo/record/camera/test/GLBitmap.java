@@ -15,7 +15,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLUtils;
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 
 /**

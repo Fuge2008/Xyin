@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.tiktokdemo.lky.tiktokdemo.utils.DensityUtils;
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 
 /**

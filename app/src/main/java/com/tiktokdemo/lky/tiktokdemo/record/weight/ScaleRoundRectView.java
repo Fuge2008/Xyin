@@ -15,7 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.tiktokdemo.lky.tiktokdemo.utils.DensityUtils;
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 /**
  * Created by lky on 2017/5/2.

@@ -8,7 +8,7 @@ import android.media.MediaMetadataRetriever;
 import android.util.Base64;
 
 import com.tiktokdemo.lky.tiktokdemo.Constant;
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 
 public class BitmapUtil {
     private static final String TAG = "BitmapUtil";

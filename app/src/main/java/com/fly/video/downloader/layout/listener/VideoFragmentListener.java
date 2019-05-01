@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.fly.iconify.widget.IconTextView;
 import com.fly.video.downloader.DownloadVideoActivity;
 import com.fly.video.downloader.GlideApp;
@@ -27,6 +27,7 @@ import com.fly.video.downloader.util.io.FileStorage;
 import com.fly.video.downloader.util.model.Video;
 import com.fly.video.downloader.util.network.DownloadQueue;
 import com.fly.video.downloader.util.network.Downloader;
+import com.fuge.xyin.SearchVideoActivity;
 
 import java.util.ArrayList;
 
@@ -70,7 +71,7 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
     public void onCreateView(View view)
     {
         unbinder = ButterKnife.bind(this, view);
-        textDownloaded.setVisibility(View.INVISIBLE);
+        textDownloaded.setVisibility(View.GONE);
         iconVideoPause.setVisibility(View.INVISIBLE);
 
         playerListener = new PlayerListener(context, textureView);
@@ -126,14 +127,18 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
 
             if (!fromHistory)
                 ((DownloadVideoActivity)fragment.getActivity()).onHistoryAppend(video);
+                ((SearchVideoActivity)fragment.getActivity()).onHistoryAppend(video);
 
             downloadQueue.clear();
+            nickname.setVisibility(View.VISIBLE);
+            content.setVisibility(View.VISIBLE);
+            avatar.setVisibility(View.VISIBLE);
             nickname.setText(video.getUser().getNickname());
             content.setText(video.getTitle());
 
             //downloadQueue.add("avatar_thumb-" + video.getUser().getId(), new Downloader(video.getUser().getAvatarThumbUrl()).setFileAsCache(FileStorage.TYPE.IMAGE, "avatar_thumb-" + video.getUser().getId()));
             //downloadQueue.add("cover-" + video.getId(), new Downloader(video.getCoverUrl(), FileStorage.TYPE.IMAGE, "cover-" + video.getId()).saveToCache());
-            textDownloaded.setVisibility(View.INVISIBLE);
+            textDownloaded.setVisibility(View.GONE);
 
             GlideApp.with(fragment)
                     .load(video.getUser().getAvatarThumbUrl())
@@ -163,7 +168,7 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
     @Override
     public void onQueueDownloaded(DownloadQueue downloadQueue, ArrayList<String> canceledHashes) {
         Toast.makeText(this.context, R.string.download_complete, Toast.LENGTH_SHORT).show();
-        textDownloaded.setVisibility(View.VISIBLE);
+        textDownloaded.setVisibility(View.GONE);
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.tiktokdemo.lky.tiktokdemo.record.camera.filter.base.gpuimage.GPUImageFilter;
 import com.tiktokdemo.lky.tiktokdemo.record.camera.utils.MagicParams;
 import com.tiktokdemo.lky.tiktokdemo.record.camera.utils.OpenGlUtils;

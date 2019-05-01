@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 
-import com.example.qd.douyinwu.R;
+import com.fuge.xyin.R;
 import com.fly.video.downloader.core.exception.URLInvalidException;
 import com.fly.video.downloader.core.os.AsyncTaskResult;
 import com.fly.video.downloader.util.content.analyzer.app.DouyinV2;
