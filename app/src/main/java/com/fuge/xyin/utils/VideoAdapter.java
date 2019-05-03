@@ -1,5 +1,6 @@
 package com.fuge.xyin.utils;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fuge.xyin.R;
+import com.fuge.xyin.WebViewActivity;
 import com.fuge.xyin.base.BaseActivity;
 import com.fuge.xyin.view.GoodView;
 import com.fuge.xyin.view.MarqueeTextView;
@@ -20,6 +22,7 @@ import java.util.List;
 
 import cn.jzvd.JZVideoPlayerStandard;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
     private BaseActivity mContext;
@@ -77,6 +80,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                 mGoodView.show(v);
             }
         });
+        holder.mUerHeadCiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, WebViewActivity.class).putExtra("title","fuge").putExtra("url","http://fuzhenwen.top:8000/"));
+            }
+        });
         holder.iv_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,6 +108,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         ImageView iv_heart;
         MusicalNoteLayout musicalNoteLayout;
         MarqueeTextView marquee1;
+        CircleImageView mUerHeadCiv;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -109,7 +119,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             marquee1 = itemView.findViewById(R.id.marquee1);
             musicalNoteLayout = itemView.findViewById(R.id.music_note_layout);
             iv_heart = itemView.findViewById(R.id.iv_heart);
-
+            mUerHeadCiv = itemView.findViewById(R.id.mUerHeadCiv);
+//
         }
     }
 

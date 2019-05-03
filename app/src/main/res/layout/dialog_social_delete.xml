@@ -38,7 +38,7 @@
         android:layout_marginRight="20dp"
         android:lines="10"
         android:layout_marginTop="20dp"
-        android:hint="请到抖音app->找到想要下载的视频-->点击分享箭头-->找到并点击复制链接---->粘贴到本输入框---点击下载按钮---抖音无水印视频会保存到您的相册。"
+        android:hint="请到【抖音】app->找到想要下载的视频-->点击【分享】箭头-->找到并点击【复制链接】---->粘贴到【本输入框】---点击【开始搜索】按钮---抖音无水印视频会保存到您的相册。----不用谢，请叫我“雷锋”"
         android:textColor="#353535"
         android:textSize="14sp" />
 

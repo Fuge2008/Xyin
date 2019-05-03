@@ -10,13 +10,14 @@
         android:layout_width="@dimen/avatar_width"
         android:layout_height="@dimen/avatar_width"
         android:layout_margin="@dimen/text_margin"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/b6p"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/avatar_width"
         android:orientation="vertical"
-        android:layout_margin="@dimen/text_margin"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="15dp"
         >
         <TextView
             android:id="@+id/history_list_nickname"
@@ -24,7 +25,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:text="Nickname"
+            android:text="用户昵称"
             />
 
         <TextView
@@ -32,9 +33,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:layout_marginTop="2dp"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="12sp"
-            android:text="Content"
+            android:text="视频内容"
             />
     </LinearLayout>
 

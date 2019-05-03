@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.fuge.xyin.CommitAdapter;
 import com.fuge.xyin.R;
 import com.fuge.xyin.base.BaseFragment;
@@ -35,10 +37,17 @@ import com.fuge.xyin.utils.MyVideoPlayer;
 import com.fuge.xyin.utils.PagerLayoutManager;
 import com.fuge.xyin.utils.SoftKeyBoardListener;
 import com.fuge.xyin.utils.SoftKeyHideShow;
+import com.fuge.xyin.utils.ToastUtils;
 import com.fuge.xyin.utils.VideoAdapter;
 import com.fuge.xyin.view.DYLoadingView;
 import com.fuge.xyin.view.Love;
 import com.fly.video.downloader.DownloadVideoActivity;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,6 +59,8 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static com.tiktokdemo.lky.tiktokdemo.utils.AppUtil.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -188,16 +199,17 @@ public class DyHomeFragment extends BaseFragment {
     }
 
     private void addData() {
-        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=97022dc18711411ead17e8dcb75bccd2&line=0&ratio=720p&media_type=4&vr_type=0");
-        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=374e166692ee4ebfae030ceae117a9d0&line=0&ratio=720p&media_type=4&vr_type=0");
-        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=8a55161f84cb4b6aab70cf9e84810ad2&line=0&ratio=720p&media_type=4&vr_type=0");
+//        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f060000bid1gf52v32e13h0upjg&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0");
+//        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f220000bgb3eqo697ar9cldm400&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0");
+//        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f1a0000bj1vgodk5hbudircrbhg&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0");
+//        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f850000bhnp3ilahtm79hgb2cc0&line=1&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0");
         myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=47a9d69fe7d94280a59e639f39e4b8f4&line=0&ratio=720p&media_type=4&vr_type=0");
         myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=3fdb4876a7f34bad8fa957db4b5ed159&line=0&ratio=720p&media_type=4&vr_type=0");
 
         //1.创建OkHttpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
-        Request request = new Request.Builder().url("http://www.fuzhenwen.top/douyin/video/video.json").method("GET", null).build();
+        Request request = new Request.Builder().url("http://fuzhenwen.top/video.json").method("GET", null).build();
         //3.创建一个call对象,参数就是Request请求对象
         Call call = okHttpClient.newCall(request);
         //4.请求加入调度，重写回调方法
@@ -210,8 +222,42 @@ public class DyHomeFragment extends BaseFragment {
             //请求成功执行的方法
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+
+                if (null != response.cacheResponse()) {
+                    String str = response.cacheResponse().toString();
+                } else {
+                    String body =  response.body().string();
+                   try{
+                    JSONObject jsonObject = new JSONObject(body);
+                       JSONObject obj = jsonObject.getJSONObject("d");
+                    JSONArray jsonArray = obj.getJSONArray("items");
+                       if(jsonArray.length()>0){
+                           myData.clear();
+                           for (int i = 0; i<jsonArray.length();i++){
+                               JSONObject mObj = (JSONObject) jsonArray.get(i);
+                               String url = mObj.getString("url");
+                            myData.add(url);
+                            adapter.notifyDataSetChanged();
+                           }
+                       }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
+        if (adapter != null){
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
     private void setAdapter() {
@@ -268,12 +314,7 @@ public class DyHomeFragment extends BaseFragment {
             jzVideo.startVideo();
             if (isBottom) {
                 //到最后一个加载第二页
-                myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=97022dc18711411ead17e8dcb75bccd2&line=0&ratio=720p&media_type=4&vr_type=0");
-                myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=374e166692ee4ebfae030ceae117a9d0&line=0&ratio=720p&media_type=4&vr_type=0");
-                myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=8a55161f84cb4b6aab70cf9e84810ad2&line=0&ratio=720p&media_type=4&vr_type=0");
-                myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=47a9d69fe7d94280a59e639f39e4b8f4&line=0&ratio=720p&media_type=4&vr_type=0");
-                myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=3fdb4876a7f34bad8fa957db4b5ed159&line=0&ratio=720p&media_type=4&vr_type=0");
-                adapter.notifyDataSetChanged();
+                addData();
             }
             jzVideo.setFinishListerer(new MyVideoPlayer.OnItemClickListener() {
                 @Override
@@ -371,6 +412,7 @@ public class DyHomeFragment extends BaseFragment {
             public void onClick(View view) {
                 Toast.makeText(mActivity, "评论成功", Toast.LENGTH_SHORT).show();
                 SoftKeyHideShow.HideShowSoftKey(mActivity);//隐藏软键盘
+
             }
         });
     }
@@ -443,12 +485,16 @@ public class DyHomeFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.suipai:
+                ToastUtils.showShortToast(mActivity, "该功能待小主开发");
                 break;
             case R.id.cb:
+                ToastUtils.showShortToast(mActivity, "该功能待小主开发");
                 break;
             case R.id.iv_search:
+                ToastUtils.showShortToast(mActivity, "该功能待小主开发");
                 break;
             case R.id.dy_view:
+                ToastUtils.showShortToast(mActivity, "该功能待小主开发");
                 break;
         }
     }

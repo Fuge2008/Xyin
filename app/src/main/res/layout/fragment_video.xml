@@ -118,29 +118,6 @@
             android:text="{fal-times 24dp}"
             android:textColor="#FFF"
             />
-
-        <LinearLayout
-            android:id="@+id/mSearchVideoList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="80dp"
-            android:orientation="vertical"
-            >
-            <ImageView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/bag"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="搜索记录"/>
-        </LinearLayout>
     </RelativeLayout>
 
 

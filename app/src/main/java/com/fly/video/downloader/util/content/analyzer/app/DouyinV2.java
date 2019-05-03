@@ -1,6 +1,7 @@
 package com.fly.video.downloader.util.content.analyzer.app;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Patterns;
 
 import com.fuge.xyin.R;
@@ -45,6 +46,8 @@ public class DouyinV2 extends VideoParser {
             throw new URLInvalidException(this.getString(R.string.exception_invalid_url));
 
         String html = new OkHttpClient().newCall(new Request.Builder().url(url).build()).execute().body().string();
+        Log.e("打印数据：",url);
+        Log.e("打印数据2：",html);
         if (html == null || html.isEmpty())
             throw new HttpException(this.getString(R.string.exception_http));
 

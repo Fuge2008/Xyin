@@ -127,6 +127,7 @@
             android:name="com.tiktokdemo.lky.tiktokdemo.record.VideoCropActivity"
             android:screenOrientation="portrait" />
         <activity android:name="com.fuge.xyin.SearchVideoActivity"></activity>
+        <activity android:name=".WebViewActivity"></activity>
     </application>
 
 </manifest>

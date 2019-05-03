@@ -127,7 +127,7 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
 
             if (!fromHistory)
                 ((DownloadVideoActivity)fragment.getActivity()).onHistoryAppend(video);
-                ((SearchVideoActivity)fragment.getActivity()).onHistoryAppend(video);
+                //((SearchVideoActivity)fragment.getActivity()).onHistoryAppend(video);
 
             downloadQueue.clear();
             nickname.setVisibility(View.VISIBLE);

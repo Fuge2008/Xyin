@@ -1,5 +1,7 @@
 package com.fly.video.downloader.util.model.app;
 
+import android.util.Log;
+
 import com.fly.video.downloader.util.model.Video;
 
 public class DouyinVideo extends Video {
@@ -61,6 +63,10 @@ public class DouyinVideo extends Video {
 
     public String getUrl() {
         String[] urls = getUrls();
+        for (int i = 0;i <urls.length;i++){
+            Log.e("打印数据3：",urls[i].toString());
+        }
+
         return urls[0];
     }
 

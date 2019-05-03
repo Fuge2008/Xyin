@@ -127,7 +127,6 @@ public class DyFollowFragment extends BaseFragment implements ViewPager.OnPageCh
 
         HsScrollViewPagerAdapter adapter = new HsScrollViewPagerAdapter(getChildFragmentManager(), mFragments, strs);
         if (mFragments.size() < 1) return;
-        Log.e("Fragment长度：", mFragments.size() + ":");
         mViewPager.setOffscreenPageLimit(mFragments.size());
         mViewPager.setAdapter(adapter);
         mSlidingTab.setViewPager(mViewPager);

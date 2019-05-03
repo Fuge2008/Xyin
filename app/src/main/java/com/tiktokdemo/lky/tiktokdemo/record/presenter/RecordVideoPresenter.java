@@ -4,6 +4,7 @@ import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.fuge.xyin.R;
 import com.heyhou.social.video.HeyhouRecorder;
@@ -609,7 +610,11 @@ public class RecordVideoPresenter implements RecordVideoContract.Presenter {
         mTempRecordTimeCount = 0;
         mMagicEngine.stopRecord();
         isVideoRecordInit = false;
-        mAudioRecorder.setAudioRecordWrite(false);
+        if(mAudioRecorder != null){
+            mAudioRecorder.setAudioRecordWrite(false);
+        }else {
+            Toast.makeText(AppUtil.getApplicationContext(),"请先打开使用麦克风权限",Toast.LENGTH_LONG).show();
+        }
         if(!CameraEngine.isFrameRateSure){
             stopSureCalculateFrame();
         }

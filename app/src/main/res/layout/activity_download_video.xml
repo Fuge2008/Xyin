@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
+            android:visibility="gone"
             android:layout_alignParentStart="true"
             android:fitsSystemWindows="true"
             android:minHeight="?attr/actionBarSize"
@@ -76,7 +77,93 @@
             android:layout_below="@+id/toolbar"
 
             />
+        <LinearLayout
+            android:id="@+id/mSearchVideoList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="80dp"
+            android:orientation="vertical"
+            >
+            <CheckBox
+                android:id="@+id/mVideoHistoryCb"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="40dp"
+                android:padding="7dp"
+                android:checked="true"
+                android:button="@null"
+                android:background="@mipmap/bag"
+                android:layout_height="40dp"
+                />
+            <TextView
+                android:id="@+id/mTipTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="搜索记录"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/mBackLl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/mBackIv"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:checked="true"
+                android:button="@null"
+                android:background="@mipmap/b2h"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:text="返回"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/mSearchLl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/mSearchIv"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:checked="true"
+                android:button="@null"
+                android:background="@mipmap/auk"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:text="搜索"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <!--<android.support.design.widget.BottomNavigationView

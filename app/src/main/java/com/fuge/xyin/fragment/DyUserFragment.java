@@ -164,6 +164,9 @@ public class DyUserFragment extends BaseFragment implements PullScrollView.OnTur
                 case "2":
                     mFragments.add(DyAttentionFragment.getInstance(true));
                     break;
+                    case "3":
+                        mFragments.add(DyMessageFragment.getInstance(true));
+                    break;
                 default:
                     mFragments.add(DyMessageFragment.getInstance(true));
                     break;

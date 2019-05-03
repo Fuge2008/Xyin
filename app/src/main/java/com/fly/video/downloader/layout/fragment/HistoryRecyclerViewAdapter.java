@@ -56,7 +56,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
                 videos.addAll(_videos);
                 notifyItemRangeInserted(offset, _videos.size());
                 notifyItemChanged(offset);
-                Toast.makeText(context, String.valueOf(page), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, String.valueOf(page), Toast.LENGTH_SHORT).show();
                 //notifyItemRangeChanged(offset, _videos.size() + 1);
                 //notifyDataSetChanged();
             }

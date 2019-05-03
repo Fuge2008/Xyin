@@ -44,7 +44,6 @@ import com.fly.video.downloader.util.model.Video;
 public class VideoFragment extends Fragment {
 
     protected VideoFragmentListener mFragmentListener;
-    private LinearLayout mSearchVideoList;
 
     public VideoFragment() {
 
@@ -90,7 +89,7 @@ public class VideoFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (R.id.video_menu_search == item.getItemId()){
-            //((DownloadVideoActivity)getActivity()).showVideoSearchFragment();
+            ((DownloadVideoActivity)getActivity()).showVideoSearchFragment();
             showPhotoDialog();
         }
         return super.onOptionsItemSelected(item);
@@ -101,19 +100,12 @@ public class VideoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_video, container, false);
-        mSearchVideoList = view.findViewById(R.id.mSearchVideoList);
         mFragmentListener.onCreateView(view);
 
         Recv recv = new Recv(this.getActivity().getIntent());
         if (recv.isActionSend() && isAdded())
             Analyze(recv.getContent());
         showPhotoDialog();
-        mSearchVideoList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            startActivity(new Intent(getActivity(),SearchVideoActivity.class));
-            }
-        });
         return view;
     }
 
