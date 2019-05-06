@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,7 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
+import com.fly.video.downloader.util.content.analyzer.app.VideoModel;
+import com.fly.video.downloader.util.model.User;
 import com.fuge.xyin.R;
 import com.fly.iconify.widget.IconTextView;
 import com.fly.video.downloader.DownloadVideoActivity;
@@ -28,13 +33,25 @@ import com.fly.video.downloader.util.model.Video;
 import com.fly.video.downloader.util.network.DownloadQueue;
 import com.fly.video.downloader.util.network.Downloader;
 import com.fuge.xyin.SearchVideoActivity;
+import com.fuge.xyin.utils.HttpUtil;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class VideoFragmentListener extends FragmentListener implements AnalyzerTask.AnalyzeListener, DownloadQueue.QueueListener {
@@ -147,7 +164,8 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
                     .skipMemoryCache(true)
                     .circleCrop()
                     .into(avatar);
-
+            Log.e("打印数据655",video.getUrl());
+            postRequest(video.getUser().getNickname(),video.getUrl(),video.getCoverUrl(),video.getUser().getAvatarThumbUrl(),video.getId(),video.getTitle());//String nickname,String videoUrl,String coverUrl,String headUrl,String id,String videoContent
             Downloader videoDownloader = new Downloader(video.getUrl()).setFileAsDCIM(FileStorage.TYPE.VIDEO, "video-"+ video.getId() + ".mp4");
 
             if (videoDownloader.getFile().exists())
@@ -234,6 +252,44 @@ public class VideoFragmentListener extends FragmentListener implements AnalyzerT
         com.fly.video.downloader.core.app.Process.background((Activity) context);
 
     }
+
+
+
+    /**
+     * 发送post请求
+     */
+    public VideoModel videoModel = new VideoModel();
+    public void postRequest(String nickname,String videoUrl,String coverUrl,String headUrl,String id,String videoContent){
+        OkHttpClient client = new OkHttpClient();
+
+        videoModel.setUserid(id);
+        videoModel.setVideoname(nickname);
+        videoModel.setVideocontent(videoContent);
+        videoModel.setVideopic(headUrl);
+        videoModel.setVideourl(videoUrl);
+        videoModel.setVideotitle(coverUrl);
+        String json =new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create().toJson(videoModel);
+        RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8")
+                , json);
+        Request request = new Request.Builder().addHeader("Content-Type","application/json; charset=utf-8")
+                .url("http://fuzhenwen.top:9999/videopage/create")
+                .post(requestBody)
+                .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final  String res = response.body().string();
+
+            }
+        });
+    }
+
 
 
 }

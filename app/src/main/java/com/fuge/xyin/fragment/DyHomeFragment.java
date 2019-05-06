@@ -32,6 +32,7 @@ import com.fuge.xyin.CommitAdapter;
 import com.fuge.xyin.R;
 import com.fuge.xyin.base.BaseFragment;
 import com.fuge.xyin.interfaces.OnViewPagerListener;
+import com.fuge.xyin.model.VideoBean;
 import com.fuge.xyin.utils.GetScreenWinth;
 import com.fuge.xyin.utils.MyVideoPlayer;
 import com.fuge.xyin.utils.PagerLayoutManager;
@@ -66,7 +67,7 @@ import static com.tiktokdemo.lky.tiktokdemo.utils.AppUtil.getApplicationContext;
  * A simple {@link Fragment} subclass.
  */
 public class DyHomeFragment extends BaseFragment {
-    private List<String> myData;
+   // private List<String> myData;
     private RecyclerView recyclerView;
     private PagerLayoutManager mLayoutManager;
     private MyVideoPlayer jzVideo;
@@ -86,6 +87,7 @@ public class DyHomeFragment extends BaseFragment {
     private Love love;
 
     private DYLoadingView dyLoadingView;
+    private List<VideoBean> videoBeans = new ArrayList<>();
 
     /**
      * 默认从第一个开始播放
@@ -186,7 +188,7 @@ public class DyHomeFragment extends BaseFragment {
         dyLoadingView = mActivity.findViewById(R.id.dy_view);
         love = mActivity.findViewById(R.id.love);
         iv_search = mActivity.findViewById(R.id.iv_search);
-        myData = new ArrayList<>();
+        //myData = new ArrayList<>();
         dyLoadingView.start();
         iv_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,13 +205,13 @@ public class DyHomeFragment extends BaseFragment {
 //        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f220000bgb3eqo697ar9cldm400&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0");
 //        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f1a0000bj1vgodk5hbudircrbhg&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0");
 //        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f850000bhnp3ilahtm79hgb2cc0&line=1&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0");
-        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=47a9d69fe7d94280a59e639f39e4b8f4&line=0&ratio=720p&media_type=4&vr_type=0");
-        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=3fdb4876a7f34bad8fa957db4b5ed159&line=0&ratio=720p&media_type=4&vr_type=0");
+//        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=47a9d69fe7d94280a59e639f39e4b8f4&line=0&ratio=720p&media_type=4&vr_type=0");
+//        myData.add("https://aweme.snssdk.com/aweme/v1/play/?video_id=3fdb4876a7f34bad8fa957db4b5ed159&line=0&ratio=720p&media_type=4&vr_type=0");
 
         //1.创建OkHttpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
-        Request request = new Request.Builder().url("http://fuzhenwen.top/video.json").method("GET", null).build();
+        Request request = new Request.Builder().url("http://fuzhenwen.top:9999/videopage/pages").method("GET", null).build();
         //3.创建一个call对象,参数就是Request请求对象
         Call call = okHttpClient.newCall(request);
         //4.请求加入调度，重写回调方法
@@ -229,14 +231,19 @@ public class DyHomeFragment extends BaseFragment {
                     String body =  response.body().string();
                    try{
                     JSONObject jsonObject = new JSONObject(body);
-                       JSONObject obj = jsonObject.getJSONObject("d");
-                    JSONArray jsonArray = obj.getJSONArray("items");
+                    JSONArray jsonArray = jsonObject.getJSONArray("content");
                        if(jsonArray.length()>0){
-                           myData.clear();
+                           videoBeans.clear();
                            for (int i = 0; i<jsonArray.length();i++){
                                JSONObject mObj = (JSONObject) jsonArray.get(i);
-                               String url = mObj.getString("url");
-                            myData.add(url);
+                               VideoBean bean = new VideoBean();
+                               bean.setVideocontent(mObj.getString("videocontent"));
+                               bean.setVideotitle(mObj.getString("videotitle"));
+                               bean.setVideourl(mObj.getString("videourl"));
+                               bean.setVideoname(mObj.getString("videoname"));
+                               bean.setVideopic(mObj.getString("videopic"));
+                               bean.setUserid(mObj.getString("userid"));
+                                videoBeans.add(bean);
                             adapter.notifyDataSetChanged();
                            }
                        }
@@ -262,7 +269,7 @@ public class DyHomeFragment extends BaseFragment {
 
     private void setAdapter() {
         //设置adapter
-        adapter = new VideoAdapter(mActivity, myData);
+        adapter = new VideoAdapter(mActivity, videoBeans);
         recyclerView.setAdapter(adapter);
         mLayoutManager = new PagerLayoutManager(mActivity, OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);

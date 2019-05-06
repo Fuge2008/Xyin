@@ -11,9 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.fly.video.downloader.GlideApp;
+import com.fly.video.downloader.util.model.Video;
 import com.fuge.xyin.R;
 import com.fuge.xyin.WebViewActivity;
 import com.fuge.xyin.base.BaseActivity;
+import com.fuge.xyin.model.TabEntity;
+import com.fuge.xyin.model.VideoBean;
 import com.fuge.xyin.view.GoodView;
 import com.fuge.xyin.view.MarqueeTextView;
 import com.fuge.xyin.view.MusicalNoteLayout;
@@ -26,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
     private BaseActivity mContext;
-    private List<String> mDatas;
+    private List<VideoBean> mDatas;
     private GoodView mGoodView;
 
     //为RecyclerView的Item添加监听
@@ -40,7 +44,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         this.mOnItemClickListerer = listerer;
     }
 
-    public VideoAdapter(BaseActivity context, List<String> datas) {
+    public VideoAdapter(BaseActivity context, List<VideoBean> datas) {
         mContext = context;
         mDatas = datas;
         mGoodView = new GoodView(mContext);
@@ -54,7 +58,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        holder.jzVideo.setUp(String.valueOf(mDatas.get(position)), JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "");
+        holder.jzVideo.setUp(String.valueOf(mDatas.get(position).getVideourl()), JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "");
         //隐藏全屏按钮、返回按钮
         holder.jzVideo.fullscreenButton.setVisibility(View.GONE);
         holder.jzVideo.backButton.setVisibility(View.GONE);
@@ -93,6 +97,18 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             }
         });
         holder.marquee1.startScroll();
+
+        GlideApp.with(mContext)
+                .load(mDatas.get(position).getVideopic())
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.icon_fu)
+                .skipMemoryCache(true)
+                .circleCrop()
+                .into(holder.mUerHeadCiv);
+        if (mDatas.get(position).getVideoname() != null)
+        holder.tv_name.setText(mDatas.get(position).getVideoname());
+        if (mDatas.get(position).getVideocontent() != null)
+        holder.tv_context.setText(mDatas.get(position).getVideocontent());
     }
 
     @Override
@@ -106,6 +122,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         ImageView iv_commit;
         ImageView iv_share;
         ImageView iv_heart;
+        TextView tv_name;
+        TextView tv_context;
         MusicalNoteLayout musicalNoteLayout;
         MarqueeTextView marquee1;
         CircleImageView mUerHeadCiv;
@@ -119,7 +137,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             marquee1 = itemView.findViewById(R.id.marquee1);
             musicalNoteLayout = itemView.findViewById(R.id.music_note_layout);
             iv_heart = itemView.findViewById(R.id.iv_heart);
-            mUerHeadCiv = itemView.findViewById(R.id.mUerHeadCiv);
+            mUerHeadCiv = itemView.findViewById(R.id.headCiv);
+            tv_name =itemView.findViewById(R.id.tv_name);
+            tv_context =itemView.findViewById(R.id.tv_context);
 //
         }
     }

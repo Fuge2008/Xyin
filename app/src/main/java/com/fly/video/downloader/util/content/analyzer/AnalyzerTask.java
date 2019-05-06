@@ -66,4 +66,5 @@ public class AnalyzerTask extends AsyncTask<String, Integer, AsyncTaskResult<Vid
         void onAnalyzeCanceled();
         void onAnalyzeError(Exception e);
     }
+
 }
