@@ -21,3 +21,7 @@
 # 8.短视频时间，倒计时处理等。
 
 # 9.从抖音爬取数据功能等，目前播放的视频是本人从抖音服务器爬取出来的。
+
+
+# 感谢大佬提供的爬取数据的代码块。 链接如下：https://github.com/fly-studio/douyin-downloader
+# 感谢大佬提供的播放视频等的代码块 https://github.com/PangHaHa12138/DouyinDemo
